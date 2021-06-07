@@ -316,13 +316,88 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -400,11 +475,110 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       active: "Клиенты"
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['usertype'])),
-  methods: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['username', 'usertype', 'data'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['logout', 'get', 'fetchClients', 'fetchMechanics', 'fetchAdmins', 'fetchAllRequests', 'fetchAllAuto', 'fetchAdmins', 'fetchWorks'])), {}, {
     setActive: function setActive(active) {
-      this.active = active;
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.active = active;
+                _context.t0 = _this.active;
+                _context.next = _context.t0 === "Клиенты" ? 4 : _context.t0 === "Механики" ? 7 : _context.t0 === "Заявки" ? 10 : _context.t0 === "Автомобили" ? 13 : _context.t0 === "Работы" ? 16 : _context.t0 === "Администраторы" ? 19 : 22;
+                break;
+
+              case 4:
+                _context.next = 6;
+                return _this.fetchClients();
+
+              case 6:
+                return _context.abrupt("break", 22);
+
+              case 7:
+                _context.next = 9;
+                return _this.fetchMechanics();
+
+              case 9:
+                return _context.abrupt("break", 22);
+
+              case 10:
+                _context.next = 12;
+                return _this.fetchAllRequests();
+
+              case 12:
+                return _context.abrupt("break", 22);
+
+              case 13:
+                _context.next = 15;
+                return _this.fetchAllAuto();
+
+              case 15:
+                return _context.abrupt("break", 22);
+
+              case 16:
+                _context.next = 18;
+                return _this.fetchWorks();
+
+              case 18:
+                return _context.abrupt("break", 22);
+
+              case 19:
+                _context.next = 21;
+                return _this.fetchAdmins();
+
+              case 21:
+                return _context.abrupt("break", 22);
+
+              case 22:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    toMechanic: function toMechanic() {
+      this.$router.push({
+        name: 'addmechanic'
+      });
     }
+  }),
+  created: function created() {
+    var _this2 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _this2.get();
+
+            case 2:
+              if (!_this2.username) {
+                _this2.$router.push({
+                  'name': login
+                });
+              }
+
+              if (_this2.usertype == 0) {
+                _this2.$router.push({
+                  'name': user
+                });
+              }
+
+              _this2.fetchClients();
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
   }
 });
 
@@ -786,13 +960,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -858,17 +1063,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       active: "Мои авто"
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['username'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['login'])), {}, {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['username', 'data'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['logout', 'fetchAuto', 'fetchRequests', 'fetchMechanics'])), {}, {
     setActive: function setActive(active) {
       this.active = active;
+
+      switch (this.active) {
+        case "Мои авто":
+          this.fetchAuto();
+          break;
+
+        case "Мои заявки":
+          this.fetchRequests();
+          break;
+
+        case "Механики":
+          this.fetchMechanics();
+          break;
+      }
     },
     addReq: function addReq() {
       this.$router.push({
         name: 'addcar'
       });
     }
-  })
+  }),
+  created: function created() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.fetchAuto();
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  }
 });
 
 /***/ }),
@@ -7109,6 +7346,20 @@ var render = function() {
           _vm._v("Механик " + _vm._s(_vm.username))
         ]),
     _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "nav-link",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.logout.apply(null, arguments)
+          }
+        }
+      },
+      [_vm._v("Выйти")]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "wrapper" }, [
       _c(
         "div",
@@ -7162,7 +7413,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Автомобили")]
+                [_vm._v("Заявки")]
               )
             ]),
             _vm._v(" "),
@@ -7220,9 +7471,268 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("table", { staticClass: "table margin" }, [
+            _c("thead", [
+              _vm.active == "Клиенты"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Имя")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Логин")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер удостоверения")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Адрес")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер телефона")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Механики"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Имя")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Логин")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Адрес")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер удостоверения")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Квалификация")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер телефона")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Заявки"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Дата")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Работа")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Гос. номер")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Заявитель")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Администраторы"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Логин")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Автомобили"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Гос. номер")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Марка")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Мощность")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Год выпуска")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Цвет")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Работы"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Работа")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Начало")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Стоимость")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Окончание план")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Окончание факт")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Механик")])
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              [
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Администраторы"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.login))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Клиенты"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.user_login))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.license_num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.address))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.tel_num))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Механики"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.user_login))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.license_num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.address))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.qualification))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.tel_num))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Заявки"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.date))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.category))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.cars_num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.user_login))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Работы"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.category))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.start_date))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.cost))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.end_plan))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.end_fact))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.mechanic))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Автомобили"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.mark))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.power))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.year))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.color))])
+                      ])
+                    : _vm._e()
+                })
+              ],
+              2
+            )
+          ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "pad_wrapper" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm.active == "Механики"
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary wide",
+                      attrs: { type: "button" },
+                      on: { click: _vm.toMechanic }
+                    },
+                    [_vm._v("Добавить")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary wide",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Удалить")]
+                  )
+                ])
+              : _vm._e()
+          ])
         ]
       )
     ])
@@ -7233,78 +7743,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table margin" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Фамилия")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Имя")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("e-mail")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Попов")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Андрей")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("and.popov@rosauto.ru")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Петров")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Василий")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("vas.petrov@rosauto.ru")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Сидоров")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Алексей")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("ale.sidorov@rosauto.ru")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pad_wrapper" }, [
-      _c("div", [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary wide", attrs: { type: "button" } },
-          [_vm._v("Экспорт в CSV")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary wide", attrs: { type: "button" } },
-          [_vm._v("Добавить")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary wide", attrs: { type: "button" } },
-          [_vm._v("Удалить")]
-        )
-      ])
+    return _c("div", [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary wide", attrs: { type: "button" } },
+        [_vm._v("Экспорт в CSV")]
+      )
     ])
   }
 ]
@@ -8053,8 +8497,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h3", { staticClass: "padh" }, [
-      _vm._v("Личный кабинет " + _vm._s(_vm.username))
+      _vm._v("Личный кабинет " + _vm._s(_vm.username || "Гость"))
     ]),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "nav-link",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.logout.apply(null, arguments)
+          }
+        }
+      },
+      [_vm._v("Выйти")]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "wrapper" }, [
       _c(
@@ -8062,7 +8520,7 @@ var render = function() {
         { staticClass: "wrapper-container", staticStyle: { width: "1000px" } },
         [
           _c("ul", { staticClass: "nav nav-pills nav-justified" }, [
-            _vm.username != "Гость"
+            _vm.username
               ? _c("li", { staticClass: "nav-item" }, [
                   _c(
                     "a",
@@ -8081,44 +8539,168 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link pointer",
-                  class: { active: _vm.active == "Мои заявки" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.setActive("Мои заявки")
-                    }
-                  }
-                },
-                [_vm._v("Мои заявки")]
-              )
-            ]),
-            _vm._v(" "),
-            _vm.username != "Гость"
+            _vm.username
               ? _c("li", { staticClass: "nav-item" }, [
                   _c(
                     "a",
                     {
                       staticClass: "nav-link pointer",
-                      class: { active: _vm.active == "Механики" },
+                      class: { active: _vm.active == "Мои заявки" },
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.setActive("Механики")
+                          return _vm.setActive("Мои заявки")
                         }
                       }
                     },
-                    [_vm._v("Механики")]
+                    [_vm._v("Мои заявки")]
                   )
                 ])
-              : _vm._e()
+              : _vm._e(),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link pointer",
+                  class: { active: _vm.active == "Механики" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.setActive("Механики")
+                    }
+                  }
+                },
+                [_vm._v("Механики")]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("table", { staticClass: "table margin" }, [
+            _c("thead", [
+              _vm.active == "Мои авто"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Гос. номер")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Марка")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Мощность")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Год выпуска")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Цвет")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Механики"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Имя")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Логин")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Адрес")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер удостоверения")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Квалификация")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Номер телефона")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.active == "Мои заявки"
+                ? _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Дата")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Работа")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Гос. номер")
+                    ])
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              [
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Мои авто"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.mark))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.power))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.year))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.color))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Механики"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.user_login))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.license_num))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.address))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.qualification))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.tel_num))])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.data, function(field, index) {
+                  return _vm.active == "Мои заявки"
+                    ? _c("tr", [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.date))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.category))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(field.cars_num))])
+                      ])
+                    : _vm._e()
+                })
+              ],
+              2
+            )
+          ]),
           _vm._v(" "),
           _vm.active != "Механики"
             ? _c("div", { staticClass: "pad_wrapper" }, [
@@ -8149,58 +8731,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table margin" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Фамилия")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Имя")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("e-mail")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Попов")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Андрей")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("and.popov@rosauto.ru")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Петров")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Василий")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("vas.petrov@rosauto.ru")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Сидоров")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Алексей")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("ale.sidorov@rosauto.ru")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -24994,6 +25525,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ky__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ky */ "./node_modules/ky/distribution/index.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_4__);
+var _actions;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -25008,14 +25543,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     user: null,
-    cars: [],
-    clients: [],
-    mechanics: [],
-    requests: [],
-    works: [],
-    admins: []
+    data: []
   },
-  actions: {
+  actions: (_actions = {
     signin: function signin(_ref, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var commit, response;
@@ -25082,19 +25612,41 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee2);
       }))();
     },
-    get: function get(_ref3) {
+    logout: function logout(_ref3) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var commit, response;
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].post('/api/user/logout');
+
+              case 3:
+                commit('logoutUser');
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    get: function get(_ref4) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
                 return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/user/get').json();
 
               case 3:
-                response = _context3.sent;
+                response = _context4.sent;
 
                 if (!response.message) {
                   commit('setUser', response);
@@ -25102,23 +25654,287 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
               case 5:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3);
+        }, _callee4);
+      }))();
+    },
+    fetchRequests: function fetchRequests(_ref5) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/requests/user').json();
+
+              case 3:
+                response = _context5.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    fetchAllRequests: function fetchAllRequests(_ref6) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/requests/all').json();
+
+              case 3:
+                response = _context6.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
+    fetchClients: function fetchClients(_ref7) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                commit = _ref7.commit;
+                _context7.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/user/clients').json();
+
+              case 3:
+                response = _context7.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    fetchAllAuto: function fetchAllAuto(_ref8) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                commit = _ref8.commit;
+                _context8.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/cars/all').json();
+
+              case 3:
+                response = _context8.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }))();
+    },
+    fetchAuto: function fetchAuto(_ref9) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                commit = _ref9.commit;
+                _context9.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/cars/user').json();
+
+              case 3:
+                response = _context9.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9);
+      }))();
+    },
+    fetchWorks: function fetchWorks(_ref10) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                commit = _ref10.commit;
+                _context10.next = 3;
+                return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/works/get').json();
+
+              case 3:
+                response = _context10.sent;
+
+                if (!response.message) {
+                  commit('setData', response);
+                }
+
+              case 5:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10);
       }))();
     }
-  },
+  }, _defineProperty(_actions, "fetchAllRequests", function fetchAllRequests(_ref11) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              commit = _ref11.commit;
+              _context11.next = 3;
+              return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/requests/all').json();
+
+            case 3:
+              response = _context11.sent;
+
+              if (!response.message) {
+                commit('setData', response);
+              }
+
+            case 5:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }))();
+  }), _defineProperty(_actions, "fetchRequests", function fetchRequests(_ref12) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              commit = _ref12.commit;
+              _context12.next = 3;
+              return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/requests/user').json();
+
+            case 3:
+              response = _context12.sent;
+
+              if (!response.message) {
+                commit('setData', response);
+              }
+
+            case 5:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12);
+    }))();
+  }), _defineProperty(_actions, "fetchMechanics", function fetchMechanics(_ref13) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              commit = _ref13.commit;
+              _context13.next = 3;
+              return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/user/mechanics').json();
+
+            case 3:
+              response = _context13.sent;
+
+              if (!response.message) {
+                commit('setData', response);
+              }
+
+            case 5:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13);
+    }))();
+  }), _defineProperty(_actions, "fetchAdmins", function fetchAdmins(_ref14) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              commit = _ref14.commit;
+              _context14.next = 3;
+              return ky__WEBPACK_IMPORTED_MODULE_3__["default"].get('/api/user/admins').json();
+
+            case 3:
+              response = _context14.sent;
+
+              if (!response.message) {
+                commit('setData', response);
+              }
+
+            case 5:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14);
+    }))();
+  }), _actions),
   mutations: {
     setUser: function setUser(state, data) {
       state.user = data;
+    },
+    setData: function setData(state, data) {
+      state.data = data;
+    },
+    logoutUser: function logoutUser(state) {
+      state.user = null;
     }
   },
   getters: {
     username: function username(s) {
-      return s.user ? s.user.name : 'Гость';
+      return s.user ? s.user.name : null;
     },
     usertype: function usertype(state) {
+      if (!state.user) return null;
+
       if (state.user.type == 0) {
         return 'client';
       } else if (state.user.type == 1) {
@@ -25126,6 +25942,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       } else {
         return 'admin';
       }
+    },
+    data: function data(s) {
+      return s.data;
     }
   }
 }));

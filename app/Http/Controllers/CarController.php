@@ -26,7 +26,7 @@ class CarController extends Controller
 
         $cars = $client->cars()->get();
 
-        return response()->json($cars);
+        return response()->json($cars, 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function addCar(CarRequest $req){

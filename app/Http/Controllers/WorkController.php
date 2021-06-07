@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Http\Requests\WorkRequest;
 use App\Models\Work;
+use App\Models\Mechanic;
 
 class WorkController extends Controller
 {
     public function getWorks(){
-    	$works = Work::all();
+    	$works = Work::all()->toArray();
 
-    	return response()->json($works, 200, [], JSON_UNESCAPED_UNICODE);
+        $result = [];
+
+        foreach ($works as $value) {
+            $temp = $value;
+            $temp['mechanic'] = Mechanic::where('id', $value['mechanics_id'])->first()->name;
+            $result[] = $temp;
+        }
+
+    	return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE);
 
     }
 

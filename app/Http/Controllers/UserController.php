@@ -95,12 +95,12 @@ class UserController extends Controller
             $type = $user->type;
 
             if ($type == 0) {
-                $user = Client::where('user_login', $user->login);
+                $user = Client::where('user_login', $user->login)->first();
                 $user = ['name' => $user->name, 'type' => $type];
             }
 
             if ($type == 1) {
-                $user = Mechanic::where('user_login', $user->login);
+                $user = Mechanic::where('user_login', $user->login)->first();
                 $user = ['name' => $user->name, 'type' => $type];
             }
 

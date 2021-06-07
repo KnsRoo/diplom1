@@ -53,4 +53,7 @@ Route::group([
     Route::get('/clients', 'UserController@getClients')->name('api:user:clients');
 
     Route::get('/mechanics', 'UserController@getMechanics')->name('api:user:mechanics');
+
+    Route::post('/add', 'UserController@addMechanic')->name('api:mechanics:add');
+
 });

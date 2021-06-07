@@ -2,6 +2,7 @@
 	<div>
 		<h3 v-if = "usertype == 'admin'" class = "padh">Администратор</h3>
 		<h3 v-else class = "padh">Механик {{username}}</h3>
+		<a @click.prevent = "logout" class = "nav-link">Выйти</a>
 		<div class = "wrapper" style = "">
 			<div class = "wrapper-container" style = "width: 1000px;">
 				<ul class="nav nav-pills nav-justified">
@@ -12,7 +13,7 @@
 				    <a class="nav-link pointer" :class = "{ active: active == 'Механики'}" @click.prevent = "setActive('Механики')">Механики</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link pointer" :class = "{ active: active == 'Заявки'}" @click.prevent = "setActive('Заявки')">Автомобили</a>
+				    <a class="nav-link pointer" :class = "{ active: active == 'Заявки'}" @click.prevent = "setActive('Заявки')">Заявки</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link pointer" :class = "{ active: active == 'Работы'}" @click.prevent = "setActive('Работы')">Работы</a>
@@ -26,31 +27,97 @@
 				</ul>
 				<table class="table margin">
 					<thead>
-					    <tr>
+					    <tr v-if = "active == 'Клиенты'">
 					    	<th scope="col">#</th>
-					    	<th scope="col">Фамилия</th>
 					    	<th scope="col">Имя</th>
-					    	<th scope="col">e-mail</th>
+					    	<th scope="col">Логин</th>
+					    	<th scope="col">Номер удостоверения</th>
+					    	<th scope="col">Адрес</th>
+					    	<th scope="col">Номер телефона</th>
+					    </tr>
+					    <tr v-if = "active == 'Механики'">
+					    	<th scope="col">#</th>
+					    	<th scope="col">Имя</th>
+					    	<th scope="col">Логин</th>
+					    	<th scope="col">Адрес</th>
+					    	<th scope="col">Номер удостоверения</th>
+					    	<th scope="col">Квалификация</th>
+					    	<th scope="col">Номер телефона</th>
+					    </tr>
+					    <tr v-if = "active == 'Заявки'">
+					    	<th scope="col">#</th>
+					    	<th scope="col">Дата</th>
+					    	<th scope="col">Работа</th>
+					    	<th scope="col">Гос. номер</th>
+					    	<th scope="col">Заявитель</th>
+					    </tr>
+					    <tr v-if = "active == 'Администраторы'">
+					    	<th scope="col">#</th>
+					    	<th scope="col">Логин</th>
+					    </tr>
+					    <tr v-if = "active == 'Автомобили'">
+					    	<th scope="col">#</th>
+					    	<th scope="col">Гос. номер</th>
+					    	<th scope="col">Марка</th>
+					    	<th scope="col">Мощность</th>
+					    	<th scope="col">Год выпуска</th>
+					    	<th scope="col">Цвет</th>
+					    </tr>
+					    <tr v-if = "active == 'Работы'">
+					    	<th scope="col">#</th>
+					    	<th scope="col">Работа</th>
+					    	<th scope="col">Начало</th>
+					    	<th scope="col">Стоимость</th>
+					    	<th scope="col">Окончание план</th>
+					    	<th scope="col">Окончание факт</th>
+					    	<th scope="col">Механик</th>
 					    </tr>
 					</thead>
 					<tbody>
-					    <tr>
-					    	<th scope="row">1</th>
-					    	<td>Попов</td>
-					    	<td>Андрей</td>
-					    	<td>and.popov@rosauto.ru</td>
+					    <tr v-if = "active == 'Администраторы'" v-for = "(field, index) in data">
+					    	<th scope="row">{{index+1}}</th>
+					    	<td>{{field.login}}</td>
 					    </tr>
-					    <tr>
-					    	<th scope="row">2</th>
-					    	<td>Петров</td>
-					    	<td>Василий</td>
-					    	<td>vas.petrov@rosauto.ru</td>
+					    <tr v-if = "active == 'Клиенты'" v-for = "(field, index) in data">
+					    	<th scope="row">{{index+1}}</th>
+					    	<td>{{field.name}}</td>
+					    	<td>{{field.user_login}}</td>
+					    	<td>{{field.license_num}}</td>
+					    	<td>{{field.address}}</td>
+					    	<td>{{field.tel_num}}</td>
 					    </tr>
-					    <tr>
-					    	<th scope="row">3</th>
-					    	<td>Сидоров</td>
-					    	<td>Алексей</td>
-					    	<td>ale.sidorov@rosauto.ru</td>
+					    <tr v-if = "active == 'Механики'" v-for = "(field, index) in data">
+					    	<th scope="row">{{index+1}}</th>
+					    	<td>{{field.name}}</td>
+					    	<td>{{field.user_login}}</td>
+					    	<td>{{field.license_num}}</td>
+					    	<td>{{field.address}}</td>
+					    	<td>{{field.qualification}}</td>
+					    	<td>{{field.tel_num}}</td>
+					    </tr>
+					    <tr v-if = "active == 'Заявки'" v-for = "(field, index) in data">
+					    	<th scope="row">{{index+1}}</th>
+					    	<td>{{field.date}}</td>
+					    	<td>{{field.category}}</td>
+					    	<td>{{field.cars_num}}</td>
+					    	<td>{{field.user_login}}</td>
+					    </tr>
+					    <tr v-if = "active == 'Работы'" v-for = "(field, index) in data">
+					    	<th scope="row">{{index+1}}</th>
+					    	<td>{{field.category}}</td>
+					    	<td>{{field.start_date}}</td>
+					    	<td>{{field.cost}}</td>
+					    	<td>{{field.end_plan}}</td>
+					    	<td>{{field.end_fact}}</td>
+					    	<td>{{field.mechanic}}</td>
+					    </tr>
+					    <tr v-if = "active == 'Автомобили'" v-for = "(field, index) in data">
+					    	<th scope="row">{{ index+1 }}</th>
+					    	<td>{{field.num}}</td>
+					    	<td>{{field.mark}}</td>
+					    	<td>{{field.power}}</td>
+					    	<td>{{field.year}}</td>
+					    	<td>{{field.color}}</td>
 					    </tr>
 					</tbody>
 				</table>
@@ -58,8 +125,8 @@
 				    <div>
 				        <button type="button" class="btn btn-primary wide">Экспорт в CSV</button>
 				    </div>
-				    <div>
-				        <button type="button" class="btn btn-primary wide">Добавить</button>
+				    <div v-if = "active == 'Механики'">
+				        <button @click = "toMechanic" type="button" class="btn btn-primary wide">Добавить</button>
 				        <button type="button" class="btn btn-primary wide">Удалить</button>
 				    </div>
 				</div>
@@ -78,12 +145,34 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['usertype'])
+		...mapGetters(['username','usertype', 'data'])
 	},
 	methods: {
-		setActive(active){
+		...mapActions(['logout', 'get','fetchClients', 'fetchMechanics', 'fetchAdmins', 'fetchAllRequests', 'fetchAllAuto', 'fetchAdmins', 'fetchWorks']),
+		async setActive(active){
 			this.active = active
+			switch (this.active){
+				case "Клиенты": await this.fetchClients(); break;
+				case "Механики": await this.fetchMechanics(); break;
+				case "Заявки": await this.fetchAllRequests(); break;
+				case "Автомобили": await this.fetchAllAuto(); break;
+				case "Работы": await this.fetchWorks(); break;
+				case "Администраторы": await this.fetchAdmins(); break;
+			}
+		},
+		toMechanic(){
+			this.$router.push({name: 'addmechanic'})
 		}
+	},
+	async created(){
+		await this.get()
+		if (!this.username){
+			this.$router.push({'name': login})
+		}
+		if (this.usertype == 0){
+			this.$router.push({'name': user})
+		}
+		this.fetchClients()
 	}
 }
 </script>
